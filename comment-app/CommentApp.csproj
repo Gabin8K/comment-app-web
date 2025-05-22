@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>CommentApp</RootNamespace>
+  </PropertyGroup>
+
+  <Target Name="Build-Vite-App" AfterTargets="Publish" >
+    <Exec Command="npm install" WorkingDirectory="client" />
+    <Exec Command="npm run build" WorkingDirectory="client" />
+  </Target>
+
+</Project>

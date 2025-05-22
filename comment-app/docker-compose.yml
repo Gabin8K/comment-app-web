@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Server=localhost;Database=CommentApp;User=sa;Password=c#comment!Password
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "c#comment!Password"
+    ports:
+      - "1433:1433"
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
